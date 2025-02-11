@@ -1,7 +1,7 @@
-import { IRolesRepository, IRolesService, Roles } from "types/RolesTypes";
-import { RolesRepository } from "@repositories/rolesRepositories";
-import { RolesService } from "@services/rolesServices";
 import { Request, Response } from "express";
+import { RolesService } from "@services/rolesServices";
+import { RolesRepository } from "@repositories/rolesRepositories";
+import { IRolesRepository, IRolesService, Roles } from "types/RolesTypes";
 
 const rolesRepository: IRolesRepository = new RolesRepository();
 const rolesService: IRolesService = new RolesService(rolesRepository)
@@ -19,7 +19,6 @@ export const registerRole = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error creating new ROLE' })
     }
 }
-
 
 export const getRoles = async (req: Request, res: Response) => {
     try {

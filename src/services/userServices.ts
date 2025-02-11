@@ -24,7 +24,6 @@ export class UserService implements IUserService {
         return this.userRepository.findOne({ email });
     }
 
-
     async updateUser(id: string, user: Partial<User>): Promise<User | null> {
         return this.userRepository.update(id, user)
     }

@@ -6,10 +6,11 @@ import { deleteRoleById, getRoleById, getRoles, registerRole, updateRoleById } f
 import { createPosts, deletePosts, findPosts, findPostsById, updatePosts } from "@controllers/postsController";
 import { getPermission, verifyToken } from "@middlewares/auth";
 import { checkRoles } from "@middlewares/roles";
+
 const router = Router();
 
 export default () => {
-    router.get('/health', (req, res) => {
+    router.get('/', (req, res) => {
         res.send("API is Healthy");
     });
 

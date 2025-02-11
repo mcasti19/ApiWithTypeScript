@@ -14,4 +14,4 @@ export default (async () => {
         console.log('Error >>', error);
         process.exit(1);
     }
-})(); // funcion de tipo IIFE  Immediately Invoked Function Expression
+})();
