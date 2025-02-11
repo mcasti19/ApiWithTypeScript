@@ -1,6 +1,6 @@
 
-import express, { Application } from "express";
 import routes from "@routes/routes";
+import express, { Application } from "express";
 import morgan from "morgan";
 
 const app: Application = express();
