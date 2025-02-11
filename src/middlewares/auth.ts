@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-import { UserService } from "@services/userServices";
-import { UserRepository } from "@repositories/userRepositories";
+import { UserService } from "../services/userServices";
+import { UserRepository } from "../repositories/userRepositories";
 import { Method, permissions } from '../types/PermissionsTypes';
 import { IUserService, IUsersRepository, User } from "types/UsersTypes";
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { UserService } from "@services/userServices";
-import { UserRepository } from "@repositories/userRepositories";
+import { UserService } from "../services/userServices";
+import { UserRepository } from "../repositories/userRepositories";
 import { IUserService, IUsersRepository, User } from "types/UsersTypes";
 
 //* Inyeccion de Dependencias

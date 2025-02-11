@@ -1,14 +1,12 @@
 import { Router } from "express";
-import { loginUser, registerUser } from "@controllers/auth/authController";
+import { loginUser, registerUser } from "../controllers/auth/authController";
 
-import { deleteUserById, getUserById, getUsers, createUser, updateUserById } from "@controllers/usersController";
-import { deleteRoleById, getRoleById, getRoles, registerRole, updateRoleById } from "@controllers/rolesController";
-import { createPosts, deletePosts, findPosts, findPostsById, updatePosts } from "@controllers/postsController";
-import { getPermission, verifyToken } from "@middlewares/auth";
-import { checkRoles } from "@middlewares/roles";
+import { deleteUserById, getUserById, getUsers, createUser, updateUserById } from "../controllers/usersController";
+import { deleteRoleById, getRoleById, getRoles, registerRole, updateRoleById } from "../controllers/rolesController";
+import { createPosts, deletePosts, findPosts, findPostsById, updatePosts } from "../controllers/postsController";
+import { getPermission, verifyToken } from "../middlewares/auth";
+import { checkRoles } from "../middlewares/roles";
 const router = Router();
-
-console.log(router.stack);
 
 export default () => {
     router.get('/', (req, res) => {

@@ -1,12 +1,22 @@
+import express, { Application } from "express";
+import morgan from "morgan";
 import 'module-alias/register';
-import app from "@server/server";
-import dotenv from 'dotenv';
-import "@config/db";
 
-dotenv.config();
+// Importa tus rutas y configuración de base de datos
+import "./config/db";
+import routes from "./routes/routes";
 
-const port = process.env.PORT || 4000
+const app: Application = express();
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.use(express.json());
+app.use(morgan("dev"));
+
+app.use('/', routes());
+
+// Manejador de errores global
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send('Algo salió mal!');
 });
+
+export default app;

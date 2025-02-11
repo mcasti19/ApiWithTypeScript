@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { RolesService } from "@services/rolesServices";
-import { RolesRepository } from "@repositories/rolesRepositories";
+import { RolesService } from "../services/rolesServices";
+import { RolesRepository } from "../repositories/rolesRepositories";
 import { IRolesRepository, IRolesService } from "types/RolesTypes";
 
 const rolesRepository: IRolesRepository = new RolesRepository();
