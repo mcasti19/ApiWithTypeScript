@@ -10,30 +10,39 @@ const userRepository: IUsersRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository)
 
 
-export const registerUser = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response): Promise<void> => {
     try {
         const { email }: User = req.body;
         const userRegistered = await userService.findUserByEmail(email);
-        if (userRegistered) return res.status(400).json({ message: 'Email already Exists!!' });
-        
+        if (userRegistered) {
+            res.status(400).json({ message: 'Email already Exists!!' });
+            return
+        }
+
         const newUser = await userService.createUser(req.body);
         res.status(201).json({ message: 'user created successfully', newUser })
-        
+
     } catch (error) {
         console.log('Error >>', error);
         res.status(500).json(error)
     }
 }
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response): Promise<void> => {
     const jwtSecret = process.env.JWT_SECRET as string;
     try {
         const { email, password }: User = req.body;
         const user = await userService.findUserByEmail(email);
-        if (!user) return res.status(400).json({ message: 'Invalid user or password' });
+        if (!user) {
+            res.status(400).json({ message: 'Invalid user or password' });
+            return
+        }
 
         const comparePassword = await user.comparePassword(password);
-        if (!comparePassword) return res.status(400).json({ message: 'Invalid user or password' });
+        if (!comparePassword) {
+            res.status(400).json({ message: 'Invalid user or password' });
+            return
+        }
 
         const token = jwt.sign({ id: user._id, email: user.email, username: user.username }, jwtSecret, { expiresIn: '1h' })
 

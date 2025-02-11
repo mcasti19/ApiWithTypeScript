@@ -8,7 +8,7 @@ const userRepository: IUsersRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository)
 
 
-export const createUser = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response): Promise<void> => {
     try {
         const newUser: User = req.body
         const usuarioCreado = await userService.createUser(newUser)
@@ -20,10 +20,13 @@ export const createUser = async (req: Request, res: Response) => {
     }
 }
 
-export const getUsers = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
         const users = await userService.findUsers();
-        if (users.length === 0) return res.status(404).json({ message: 'No users Found' });
+        if (users.length === 0) {
+            res.status(404).json({ message: 'No users Found' });
+            return
+        }
 
         res.status(200).json({ message: `${users.length} Users Found`, users });
 
@@ -33,11 +36,14 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
-export const getUserById = async (req: Request, res: Response) => {
+export const getUserById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id = req.params.id
         const user = await userService.findUserById(id)
-        if (!user) return res.status(404).json({ message: 'User ID NOT Found' });
+        if (!user) {
+            res.status(404).json({ message: 'User ID NOT Found' });
+            return
+        }
         res.status(200).json(user);
 
     } catch (error) {
@@ -46,7 +52,7 @@ export const getUserById = async (req: Request, res: Response) => {
     }
 }
 
-export const updateUserById = async (req: Request, res: Response) => {
+export const updateUserById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id: string = req.params.id
         const user: User = req.body
@@ -59,7 +65,7 @@ export const updateUserById = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteUserById = async (req: Request, res: Response) => {
+export const deleteUserById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id: string = req.params.id;
         const deletedUser = await userService.deleteUser(id);

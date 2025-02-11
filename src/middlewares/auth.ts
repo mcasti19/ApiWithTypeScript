@@ -8,33 +8,42 @@ import { IUserService, IUsersRepository, User } from "types/UsersTypes";
 const userRepository: IUsersRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository);
 
-export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
+export const verifyToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const jwtSecret = process.env.JWT_SECRET as string;
     const token = req.headers.authorization?.match(/^Bearer (.*)$/)?.[ 1 ].trim();
     if (!token) {
-        return res.status(401).send({ error: "Token no proporcionado" });
+        {
+            res.status(401).send({ error: "Token not provided" });
+            return
+        }
     }
     try {
         const verify = jwt.verify(token, jwtSecret) as User;
         const getUser = await userService.findUserById(verify.id);
-        if (!getUser) return res.status(400);
-        req.currentUser = getUser;
+        if (!getUser) {
+            res.status(400);
+            return
+        }
 
+        req.currentUser = getUser;
         next();
 
     } catch (error: any) {
         console.log('error :>>', error);
         if (error.message === 'invalid signature') {
-            return res.status(401).send({ error: "Token inválido" });
+            res.status(401).send({ error: "Invalid token" });
+            return
         } else if (error.message === 'jwt expired') {
-            return res.status(401).send({ error: "Token expirado" });
+            res.status(401).send({ error: "Expired token" });
+            return
         } else {
-            return res.status(500).send({ error: "Error interno del servidor" });
+            res.status(500).send({ error: "Internal Server Error" });
+            return
         }
     }
 }
 
-export const getPermission = async (req: Request, res: Response, next: NextFunction) => {
+export const getPermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
     const { currentUser, method, path } = req;
     const { roles } = currentUser;
@@ -62,6 +71,9 @@ export const getPermission = async (req: Request, res: Response, next: NextFunct
     const permissionsGranted = findMethod?.permissions.find(x => userPermissions.includes(x))
     console.log('permissionsGranted :>>', permissionsGranted);
 
-    if (!permissionsGranted) return res.status(401).json("Unauthorized!!!")
+    if (!permissionsGranted) {
+        res.status(401).json("Unauthorized!!!");
+        return
+    }
     next();
 } 

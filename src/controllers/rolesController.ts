@@ -7,7 +7,7 @@ const rolesRepository: IRolesRepository = new RolesRepository();
 const rolesService: IRolesService = new RolesService(rolesRepository)
 
 
-export const registerRole = async (req: Request, res: Response) => {
+export const registerRole = async (req: Request, res: Response): Promise<void> => {
     try {
         const newRoles: Roles = req.body
         const RolCreated = await rolesService.createRoles(newRoles)
@@ -20,10 +20,14 @@ export const registerRole = async (req: Request, res: Response) => {
     }
 }
 
-export const getRoles = async (req: Request, res: Response) => {
+export const getRoles = async (req: Request, res: Response): Promise<void> => {
     try {
         const roles = await rolesService.findRoles();
-        if (roles.length === 0) return res.status(404).json({ message: 'No roles founds' })
+        if (roles.length === 0) {
+            res.status(404).json({ message: 'No roles founds' });
+            return
+        }
+
         console.log('Roles: ', roles);
         res.status(200).json(roles);
 
@@ -33,11 +37,15 @@ export const getRoles = async (req: Request, res: Response) => {
     }
 }
 
-export const getRoleById = async (req: Request, res: Response) => {
+export const getRoleById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id = req.params.id
         const roles = await rolesService.findRolesById(id)
-        if (!roles) return res.status(404).json({ message: 'Not role founds' })
+        if (!roles) {
+            res.status(404).json({ message: 'Not role founds' });
+            return
+        }
+
         console.log(roles);
         res.status(201).json(roles);
 
@@ -47,7 +55,7 @@ export const getRoleById = async (req: Request, res: Response) => {
     }
 }
 
-export const updateRoleById = async (req: Request, res: Response) => {
+export const updateRoleById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id: string = req.params.id
         const roles: Roles = req.body
@@ -61,7 +69,7 @@ export const updateRoleById = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteRoleById = async (req: Request, res: Response) => {
+export const deleteRoleById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id: string = req.params.id;
         const deletedroles = await rolesService.deleteRoles(id);
