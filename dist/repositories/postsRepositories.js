@@ -1,23 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostsRepository = void 0;
-const _models_1 = require("@models");
+const models_1 = require("../models");
 class PostsRepository {
     async create(data) {
-        const newPosts = new _models_1.PostsModel(data);
+        const newPosts = new models_1.PostsModel(data);
         return await newPosts.save();
     }
     async find(query) {
-        return await _models_1.PostsModel.find(query || {}).exec();
+        return await models_1.PostsModel.find(query || {}).exec();
     }
     async findById(id) {
-        return await _models_1.PostsModel.findById(id).exec();
+        return await models_1.PostsModel.findById(id).exec();
     }
     async update(id, data) {
-        return await _models_1.PostsModel.findByIdAndUpdate(id, data, { new: true }).exec();
+        return await models_1.PostsModel.findByIdAndUpdate(id, data, { new: true }).exec();
     }
     async delete(id) {
-        const deleted = await _models_1.PostsModel.findByIdAndDelete(id).exec();
+        const deleted = await models_1.PostsModel.findByIdAndDelete(id).exec();
         return deleted !== null;
     }
 }

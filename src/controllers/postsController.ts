@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { PostsRepository } from "@repositories";
-import { PostsService } from "@services";
-import { IPostsRepository, IPostsService, Posts } from "types/PostsTypes";
+import { PostsRepository } from "../repositories";
+import { PostsService } from "../services";
+import { IPostsRepository, IPostsService, Posts } from "../types/PostsTypes";
 
 const postsRepository: IPostsRepository = new PostsRepository();
 const postsService: IPostsService = new PostsService(postsRepository);

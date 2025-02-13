@@ -1,7 +1,7 @@
-import { CustomerRepository } from "@repositories";
-import { CustomerService } from "@services";
+import { CustomerRepository } from "../repositories";
+import { CustomerService } from "../services";
 import { Request, Response } from "express";
-import { ICustomerRepository, ICustomerService, Customer } from "types/CustomerTypes";
+import { ICustomerRepository, ICustomerService, Customer } from "../types/CustomerTypes";
 
 const customerRepository: ICustomerRepository = new CustomerRepository();
 const customerService: ICustomerService = new CustomerService(customerRepository);

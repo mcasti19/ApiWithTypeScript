@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { UserRepository } from "@repositories";
-import { UserService } from "@services";
+import { UserRepository } from "../repositories";
+import { UserService } from "../services";
 
-import { IUserService, IUsersRepository, User } from "types/UsersTypes";
+import { IUserService, IUsersRepository, User } from "../types/UsersTypes";
 
 //* Inyeccion de Dependencias
 const userRepository: IUsersRepository = new UserRepository();

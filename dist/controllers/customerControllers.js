@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchCustomer = exports.customerCount = exports.deleteCustomer = exports.updateCustomer = exports.createCustomer = exports.findCustomerById = exports.findCustomer = void 0;
-const _repositories_1 = require("@repositories");
-const _services_1 = require("@services");
-const customerRepository = new _repositories_1.CustomerRepository();
-const customerService = new _services_1.CustomerService(customerRepository);
+const repositories_1 = require("../repositories");
+const services_1 = require("../services");
+const customerRepository = new repositories_1.CustomerRepository();
+const customerService = new services_1.CustomerService(customerRepository);
 const findCustomer = async (req, res) => {
     try {
         const customer = await customerService.findCustomers();

@@ -1,4 +1,4 @@
-import { RevenueModel } from "@models";
+import { RevenueModel } from "../models";
 import { Query } from "../types/RepositoryTypes";
 import { IRevenueRepository, Revenue } from "../types/RevenueType";
 

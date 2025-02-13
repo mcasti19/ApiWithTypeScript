@@ -1,8 +1,8 @@
 
 import { Request, Response } from "express";
-import { RevenueRepository } from "@repositories";
-import { RevenueService } from "@services";
-import { IRevenueRepository, IRevenueService, Revenue } from "types/RevenueType";
+import { RevenueRepository } from "../repositories";
+import { RevenueService } from "../services";
+import { IRevenueRepository, IRevenueService, Revenue } from "../types/RevenueType";
 
 const revenueRepository: IRevenueRepository = new RevenueRepository();
 const revenueService: IRevenueService = new RevenueService(revenueRepository);

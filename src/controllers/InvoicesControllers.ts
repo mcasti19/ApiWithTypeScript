@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { ICustomerRepository, ICustomerService } from "types/CustomerTypes";
-import { IInvoicesRepository, IInvoicesService, Invoice } from "types/InvoicesTypes";
-import { CustomerRepository, InvoicesRepository } from "@repositories";
-import { CustomerService, InvoiceService } from "@services";
+import { ICustomerRepository, ICustomerService } from "../types/CustomerTypes";
+import { IInvoicesRepository, IInvoicesService, Invoice } from "../types/InvoicesTypes";
+import { CustomerRepository, InvoicesRepository } from "../repositories";
+import { CustomerService, InvoiceService } from "../services";
 
 const invoicesRepository: IInvoicesRepository = new InvoicesRepository();
 const invoicesService: IInvoicesService = new InvoiceService(invoicesRepository);

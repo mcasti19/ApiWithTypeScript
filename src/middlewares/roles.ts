@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { RolesRepository } from "@repositories";
-import { RolesService } from "@services";
+import { RolesRepository } from "../repositories";
+import { RolesService } from "../services";
 import { IRolesRepository, IRolesService } from "../types/RolesTypes";
 
 

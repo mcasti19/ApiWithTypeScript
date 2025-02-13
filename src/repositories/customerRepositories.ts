@@ -1,6 +1,6 @@
-import { CustomerModel } from "@models";
+import { CustomerModel } from "../models";
 import { Query } from "../types/RepositoryTypes";
-import { ICustomerRepository, Customer, SearchCustomers } from "types/CustomerTypes";
+import { ICustomerRepository, Customer, SearchCustomers } from "../types/CustomerTypes";
 
 export class CustomerRepository implements ICustomerRepository {
   async create(data: Customer): Promise<Customer> {

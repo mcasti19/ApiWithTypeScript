@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findRevenue = void 0;
-const _repositories_1 = require("@repositories");
-const _services_1 = require("@services");
-const revenueRepository = new _repositories_1.RevenueRepository();
-const revenueService = new _services_1.RevenueService(revenueRepository);
+const repositories_1 = require("../repositories");
+const services_1 = require("../services");
+const revenueRepository = new repositories_1.RevenueRepository();
+const revenueService = new services_1.RevenueService(revenueRepository);
 const findRevenue = async (req, res) => {
     try {
         const revenue = await revenueService.findRevenues();

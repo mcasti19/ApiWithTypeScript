@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getInvoicePageCount = exports.getInvoicesPaginated = exports.getInvoiceCount = exports.getInvoiceStatusCount = exports.deleteInvoices = exports.updateInvoices = exports.createInvoices = exports.findInvoicesById = exports.findInvoices = void 0;
-const _repositories_1 = require("@repositories");
-const _services_1 = require("@services");
-const invoicesRepository = new _repositories_1.InvoicesRepository();
-const invoicesService = new _services_1.InvoiceService(invoicesRepository);
-const customerRepository = new _repositories_1.CustomerRepository();
-const customerService = new _services_1.CustomerService(customerRepository);
+const repositories_1 = require("../repositories");
+const services_1 = require("../services");
+const invoicesRepository = new repositories_1.InvoicesRepository();
+const invoicesService = new services_1.InvoiceService(invoicesRepository);
+const customerRepository = new repositories_1.CustomerRepository();
+const customerService = new services_1.CustomerService(customerRepository);
 const findInvoices = async (req, res) => {
     try {
         const invoices = await invoicesService.findInvoices({}, {}, { limit: 5 });

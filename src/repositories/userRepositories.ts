@@ -1,4 +1,4 @@
-import { UserModel } from "@models";
+import { UserModel } from "../models";
 import { Query } from "../types/RepositoryTypes";
 import { IUsersRepository, User } from "../types/UsersTypes";
 

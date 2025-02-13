@@ -1,27 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvoicesRepository = void 0;
-const _models_1 = require("@models");
+const models_1 = require("../models");
 class InvoicesRepository {
     async create(data) {
-        const newInvoices = new _models_1.InvoicesModel(data);
+        const newInvoices = new models_1.InvoicesModel(data);
         return await newInvoices.save();
     }
     async find(query, projection, options) {
-        return await _models_1.InvoicesModel.find(query || {}, projection, options).populate("customer");
+        return await models_1.InvoicesModel.find(query || {}, projection, options).populate("customer");
     }
     async findById(id) {
-        return await _models_1.InvoicesModel.findById(id).exec();
+        return await models_1.InvoicesModel.findById(id).exec();
     }
     async update(id, data) {
-        return await _models_1.InvoicesModel.findByIdAndUpdate(id, data, { new: true }).exec();
+        return await models_1.InvoicesModel.findByIdAndUpdate(id, data, { new: true }).exec();
     }
     async delete(id) {
-        const deleted = await _models_1.InvoicesModel.findByIdAndDelete(id).exec();
+        const deleted = await models_1.InvoicesModel.findByIdAndDelete(id).exec();
         return deleted !== null;
     }
     async invoicesStatusCount() {
-        const getInvoiceCount = await _models_1.InvoicesModel.aggregate([
+        const getInvoiceCount = await models_1.InvoicesModel.aggregate([
             {
                 $group: {
                     _id: "$status",
@@ -36,7 +36,7 @@ class InvoicesRepository {
         return formattedResult;
     }
     async invoicesCount() {
-        return await _models_1.InvoicesModel.countDocuments();
+        return await models_1.InvoicesModel.countDocuments();
     }
     async invoicePaginated(query, currentPage) {
         const ITEMS_PER_PAGE = 6;
@@ -53,7 +53,7 @@ class InvoicesRepository {
                 ]
             }
             : {}; // Si no hay query, no aplicar filtro.
-        const invoices = await _models_1.InvoicesModel.aggregate([
+        const invoices = await models_1.InvoicesModel.aggregate([
             // "JOIN" entre `invoices` y `customers` usando $lookup
             {
                 $lookup: {
@@ -88,7 +88,7 @@ class InvoicesRepository {
         return invoices;
     }
     async invoicesPagesCount(query) {
-        const countResult = await _models_1.InvoicesModel.aggregate([
+        const countResult = await models_1.InvoicesModel.aggregate([
             // Realizar el "JOIN" entre `invoices` y `customers`
             {
                 $lookup: {

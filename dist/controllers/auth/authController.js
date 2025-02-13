@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUser = exports.registerUser = void 0;
-const _repositories_1 = require("@repositories");
-const _services_1 = require("@services");
+const repositories_1 = require("../../repositories");
+const services_1 = require("../../services");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 //* Inyeccion de Dependencias
-const userRepository = new _repositories_1.UserRepository();
-const userService = new _services_1.UserService(userRepository);
+const userRepository = new repositories_1.UserRepository();
+const userService = new services_1.UserService(userRepository);
 const registerUser = async (req, res) => {
     try {
         const { email } = req.body;

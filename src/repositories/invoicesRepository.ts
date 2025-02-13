@@ -1,4 +1,4 @@
-import { InvoicesModel } from "@models";
+import { InvoicesModel } from "../models";
 import { Query } from "../types/RepositoryTypes";
 import { IInvoicesRepository, Invoice, InvoiceCount, InvoicePageCount, InvoicePaginated } from "../types/InvoicesTypes";
 

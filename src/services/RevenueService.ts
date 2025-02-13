@@ -1,5 +1,5 @@
-import { Query } from "types/RepositoryTypes";
-import { IRevenueRepository, IRevenueService, Revenue } from "types/RevenueType";
+import { Query } from "../types/RepositoryTypes";
+import { IRevenueRepository, IRevenueService, Revenue } from "../types/RevenueType";
 
 export class RevenueService implements IRevenueService {
   private RevenueRepository: IRevenueRepository;

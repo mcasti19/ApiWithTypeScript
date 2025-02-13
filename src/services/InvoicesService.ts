@@ -1,5 +1,5 @@
-import { Query } from "types/RepositoryTypes";
-import { IInvoicesRepository, IInvoicesService, Invoice, InvoiceCount, InvoicePageCount, InvoicePaginated } from "types/InvoicesTypes";
+import { Query } from "../types/RepositoryTypes";
+import { IInvoicesRepository, IInvoicesService, Invoice, InvoiceCount, InvoicePageCount, InvoicePaginated } from "../types/InvoicesTypes";
 
 export class InvoiceService implements IInvoicesService {
     private invoiceRepository: IInvoicesRepository;
