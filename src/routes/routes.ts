@@ -35,7 +35,7 @@ import {
     updatePosts,
     updateRoleById,
     updateUserById
-} from "@controllers";
+} from "../controllers";
 
 
 const router = Router();
