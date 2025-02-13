@@ -1,7 +1,6 @@
-import { UserModel } from "../models/Users";
-import { Query } from "types/RepositoryTypes";
-import { IUsersRepository, User } from "types/UsersTypes";
-
+import { UserModel } from "@models";
+import { Query } from "../types/RepositoryTypes";
+import { IUsersRepository, User } from "../types/UsersTypes";
 
 export class UserRepository implements IUsersRepository {
 

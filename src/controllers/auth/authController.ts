@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
+import { UserRepository } from '@repositories';
+import { UserService } from '@services';
 import { IUserService, IUsersRepository, User } from 'types/UsersTypes';
-import { UserRepository } from "@repositories/userRepositories";
-import { UserService } from "@services/userServices";
-
 import jwt from "jsonwebtoken";
 
 //* Inyeccion de Dependencias

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUserById = exports.updateUserById = exports.getUserById = exports.getUsers = exports.createUser = void 0;
-const userServices_1 = require("../services/userServices");
-const userRepositories_1 = require("../repositories/userRepositories");
+const _repositories_1 = require("@repositories");
+const _services_1 = require("@services");
 //* Inyeccion de Dependencias
-const userRepository = new userRepositories_1.UserRepository();
-const userService = new userServices_1.UserService(userRepository);
+const userRepository = new _repositories_1.UserRepository();
+const userService = new _services_1.UserService(userRepository);
 const createUser = async (req, res) => {
     try {
         const newUser = req.body;

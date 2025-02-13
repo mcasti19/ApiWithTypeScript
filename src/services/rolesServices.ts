@@ -1,6 +1,7 @@
 import { Query } from "types/RepositoryTypes";
 import { IRolesRepository, IRolesService, Roles } from "types/RolesTypes";
 
+
 export class RolesService implements IRolesService {
     private RolesRepository: IRolesRepository
 

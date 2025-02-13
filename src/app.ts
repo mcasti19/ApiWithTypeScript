@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import 'module-alias/register';
 
@@ -13,8 +13,14 @@ app.use(morgan("dev"));
 
 app.use('/', routes());
 
+// const port = process.env.PORT || 4000;
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+
 // Manejador de errores global
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).send('Algo salió mal!');
 });

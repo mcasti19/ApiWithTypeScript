@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteRoleById = exports.updateRoleById = exports.getRoleById = exports.getRoles = exports.registerRole = void 0;
-const rolesServices_1 = require("../services/rolesServices");
-const rolesRepositories_1 = require("../repositories/rolesRepositories");
-const rolesRepository = new rolesRepositories_1.RolesRepository();
-const rolesService = new rolesServices_1.RolesService(rolesRepository);
+const _repositories_1 = require("@repositories");
+const _services_1 = require("@services");
+const rolesRepository = new _repositories_1.RolesRepository();
+const rolesService = new _services_1.RolesService(rolesRepository);
 const registerRole = async (req, res) => {
     try {
         const newRoles = req.body;

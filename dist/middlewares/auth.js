@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPermission = exports.verifyToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const userServices_1 = require("../services/userServices");
-const userRepositories_1 = require("../repositories/userRepositories");
+const _repositories_1 = require("@repositories");
+const _services_1 = require("@services");
 const PermissionsTypes_1 = require("../types/PermissionsTypes");
-const userRepository = new userRepositories_1.UserRepository();
-const userService = new userServices_1.UserService(userRepository);
+const userRepository = new _repositories_1.UserRepository();
+const userService = new _services_1.UserService(userRepository);
 const verifyToken = async (req, res, next) => {
     const jwtSecret = process.env.JWT_SECRET;
     const token = req.headers.authorization?.match(/^Bearer (.*)$/)?.[1].trim();
