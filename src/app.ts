@@ -13,11 +13,17 @@ app.use(morgan("dev"));
 
 app.use('/', routes());
 
-// const port = process.env.PORT || 4000;
 
+
+// //* SOLO PARA USO LOCAL
+// const port = process.env.PORT || 4000;
 // app.listen(port, () => {
 //   console.log(`Server is running on port ${port}`);
 // });
+// //*
+
+
+
 
 // Manejador de errores global
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
