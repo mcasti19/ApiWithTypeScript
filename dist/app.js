@@ -13,6 +13,12 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, morgan_1.default)("dev"));
 app.use('/', (0, routes_1.default)());
+// //* SOLO PARA USO LOCAL
+// const port = process.env.PORT || 4000;
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+// //*
 // Manejador de errores global
 app.use((err, req, res, next) => {
     console.error(err.stack);

@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { RolesService } from "../services/rolesServices";
-import { RolesRepository } from "../repositories/rolesRepositories";
-import { IRolesRepository, IRolesService, Roles } from "types/RolesTypes";
+import { RolesRepository } from "../repositories";
+import { RolesService } from "../services";
+
+import { IRolesRepository, IRolesService, Roles } from "../types/RolesTypes";
 
 const rolesRepository: IRolesRepository = new RolesRepository();
 const rolesService: IRolesService = new RolesService(rolesRepository)

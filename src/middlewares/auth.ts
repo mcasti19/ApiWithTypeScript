@@ -1,9 +1,12 @@
-import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-import { UserService } from "../services/userServices";
-import { UserRepository } from "../repositories/userRepositories";
-import { Method, permissions } from '../types/PermissionsTypes';
-import { IUserService, IUsersRepository, User } from "types/UsersTypes";
+import jwt from "jsonwebtoken";
+
+import { UserRepository } from "../repositories";
+import { UserService } from "../services";
+
+import { Method, permissions } from "../types/PermissionsTypes";
+import { IUserService, IUsersRepository, User } from "../types/UsersTypes";
+
 
 const userRepository: IUsersRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository);
