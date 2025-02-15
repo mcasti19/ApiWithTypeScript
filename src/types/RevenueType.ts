@@ -7,9 +7,11 @@ export interface Revenue extends Document {
 }
 
 export interface IRevenueRepository {
+  create(data: Revenue): Promise<Revenue>;
   find(query?: Query): Promise<Revenue[]>;
 }
 
 export interface IRevenueService {
+  createRevenues(revenue: Revenue): Promise<Revenue>;
   findRevenues(query?: Query): Promise<Revenue[]>;
 }

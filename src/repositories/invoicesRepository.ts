@@ -3,6 +3,7 @@ import { Query } from "../types/RepositoryTypes";
 import { IInvoicesRepository, Invoice, InvoiceCount, InvoicePageCount, InvoicePaginated } from "../types/InvoicesTypes";
 
 export class InvoicesRepository implements IInvoicesRepository {
+  
   async create(data: Invoice): Promise<Invoice> {
     const newInvoices = new InvoicesModel(data);
     return await newInvoices.save();

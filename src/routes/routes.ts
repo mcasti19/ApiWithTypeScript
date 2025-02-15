@@ -6,6 +6,7 @@ import {
     createCustomer,
     createInvoices,
     createPosts,
+    createRevenue,
     createUser,
     customerCount,
     deleteCustomer,
@@ -97,6 +98,7 @@ export default () => {
 
     // Revenue Route
     router.get("/revenues", verifyToken, getPermission, findRevenue);
+    router.post("/revenues", verifyToken, getPermission, createRevenue);
 
 
     return router

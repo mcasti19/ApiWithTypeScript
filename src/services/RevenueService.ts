@@ -8,6 +8,10 @@ export class RevenueService implements IRevenueService {
     this.RevenueRepository = RevenueRepository;
   }
 
+  async createRevenues(revenue: Revenue): Promise<Revenue> {
+    return this.RevenueRepository.create(revenue);
+  }
+
   async findRevenues(query?: Query): Promise<Revenue[]> {
     return this.RevenueRepository.find(query);
   }

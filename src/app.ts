@@ -15,12 +15,12 @@ app.use('/', routes());
 
 
 
-// //* SOLO PARA USO LOCAL
-// const port = process.env.PORT || 4000;
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
-// //*
+//* SOLO PARA USO LOCAL
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+//*
 
 
 
