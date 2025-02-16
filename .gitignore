@@ -6,6 +6,7 @@ node_modules
 
 # Ignora todos los archivos de texto
 *.txt
+*.http
 
 # Ignora los archivos relacionados a API keys
 .env
