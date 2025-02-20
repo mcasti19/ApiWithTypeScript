@@ -5,6 +5,9 @@ class RevenueService {
     constructor(RevenueRepository) {
         this.RevenueRepository = RevenueRepository;
     }
+    async createRevenues(revenue) {
+        return this.RevenueRepository.create(revenue);
+    }
     async findRevenues(query) {
         return this.RevenueRepository.find(query);
     }

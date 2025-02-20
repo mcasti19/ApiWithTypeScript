@@ -54,5 +54,6 @@ exports.default = () => {
     router.delete("/invoices/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteInvoices);
     // Revenue Route
     router.get("/revenues", auth_1.verifyToken, auth_1.getPermission, controllers_1.findRevenue);
+    router.post("/revenues", auth_1.verifyToken, auth_1.getPermission, controllers_1.createRevenue);
     return router;
 };

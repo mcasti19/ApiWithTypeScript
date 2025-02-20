@@ -1,10 +1,10 @@
 import { Query } from "../types/RepositoryTypes";
-import { IUsersRepository, IUserService, User } from "../types/UsersTypes";
+import { IUserRepository, IUserService, User } from "../types/UsersTypes";
 
 export class UserService implements IUserService {
-    private userRepository: IUsersRepository
+    private userRepository: IUserRepository
 
-    constructor(userRepository: IUsersRepository) {
+    constructor(userRepository: IUserRepository) {
         this.userRepository = userRepository
     }
 

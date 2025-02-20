@@ -33,19 +33,24 @@ const loginUser = async (req, res) => {
         const { email, password } = req.body;
         const user = await userService.findUserByEmail(email);
         if (!user) {
-            res.status(400).json({ message: 'Invalid user or password' });
+            res.status(400).json({ message: "Invalid user or password" });
             return;
         }
-        const comparePassword = await user.comparePassword(password);
-        if (!comparePassword) {
-            res.status(400).json({ message: 'Invalid user or password' });
+        const comparePass = await user.comparePassword(password);
+        if (!comparePass) {
+            res.status(400).json({ message: "Invalid user or password" });
             return;
         }
-        const token = jsonwebtoken_1.default.sign({ id: user._id, email: user.email, username: user.username }, jwtSecret, { expiresIn: '1h' });
-        res.status(200).json({ message: "User Logged", user, token });
+        const token = jsonwebtoken_1.default.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret);
+        res.status(200).json({
+            id: user._id,
+            name: user.username,
+            email: user.email,
+            token
+        });
     }
     catch (error) {
-        console.log('Error >>', error);
+        console.log("error :>> ", error);
         res.status(500).json(error);
     }
 };

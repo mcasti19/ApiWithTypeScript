@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 //* Inyeccion de Dependencias
 const userRepository: IUserRepository = new UserRepository();
-const userService: IUserService = new UserService(userRepository)
+const userService: IUserService = new UserService(userRepository);
 
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
@@ -33,10 +33,16 @@ export const loginUser = async (req: Request, res: Response) => {
         const { email, password }: User = req.body;
 
         const user = await userService.findUserByEmail(email);
-        if (!user) return res.status(400).json({ message: "Invalid user or password" });
+        if (!user) {
+            res.status(400).json({ message: "Invalid user or password" });
+            return
+        }
 
         const comparePass = await user.comparePassword(password);
-        if (!comparePass) return res.status(400).json({ message: "Invalid user or password" });
+        if (!comparePass) {
+            res.status(400).json({ message: "Invalid user or password" });
+            return
+        }
 
         const token = jwt.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret);
 

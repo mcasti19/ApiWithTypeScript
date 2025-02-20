@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import { UserRepository } from "../repositories";
 import { UserService } from "../services";
 
-import { IUserService, IUsersRepository, User } from "../types/UsersTypes";
+import { IUserService, IUserRepository, User } from "../types/UsersTypes";
 
 //* Inyeccion de Dependencias
-const userRepository: IUsersRepository = new UserRepository();
+const userRepository: IUserRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository)
 
 

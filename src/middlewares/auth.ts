@@ -5,10 +5,10 @@ import { UserRepository } from "../repositories";
 import { UserService } from "../services";
 
 import { Method, permissions } from "../types/PermissionsTypes";
-import { IUserService, IUsersRepository, User } from "../types/UsersTypes";
+import { IUserService, IUserRepository, User } from "../types/UsersTypes";
 
 
-const userRepository: IUsersRepository = new UserRepository();
+const userRepository: IUserRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository);
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

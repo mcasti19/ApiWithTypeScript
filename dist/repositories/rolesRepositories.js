@@ -17,7 +17,7 @@ class RolesRepository {
         return await models_1.RolesModel.findByIdAndUpdate(id, data, { new: true }).exec();
     }
     async delete(id) {
-        const deleted = models_1.RolesModel.findByIdAndDelete(id).exec();
+        const deleted = await models_1.RolesModel.findByIdAndDelete(id).exec();
         return deleted !== null;
     }
 }
