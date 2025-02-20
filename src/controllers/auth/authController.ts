@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { UserRepository } from '../../repositories';
 import { UserService } from '../../services';
-import { IUserService, IUsersRepository, User } from '../../types/UsersTypes';
+import { IUserService, IUserRepository, User } from '../../types/UsersTypes';
 import jwt from "jsonwebtoken";
 
 //* Inyeccion de Dependencias
-const userRepository: IUsersRepository = new UserRepository();
+const userRepository: IUserRepository = new UserRepository();
 const userService: IUserService = new UserService(userRepository)
 
 
@@ -27,28 +27,27 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     }
 }
 
-export const loginUser = async (req: Request, res: Response): Promise<void> => {
+export const loginUser = async (req: Request, res: Response) => {
     const jwtSecret = process.env.JWT_SECRET as string;
     try {
         const { email, password }: User = req.body;
+
         const user = await userService.findUserByEmail(email);
-        if (!user) {
-            res.status(400).json({ message: 'Invalid user or password' });
-            return
-        }
+        if (!user) return res.status(400).json({ message: "Invalid user or password" });
 
-        const comparePassword = await user.comparePassword(password);
-        if (!comparePassword) {
-            res.status(400).json({ message: 'Invalid user or password' });
-            return
-        }
+        const comparePass = await user.comparePassword(password);
+        if (!comparePass) return res.status(400).json({ message: "Invalid user or password" });
 
-        const token = jwt.sign({ id: user._id, email: user.email, username: user.username }, jwtSecret, { expiresIn: '1h' })
+        const token = jwt.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret);
 
-        res.status(200).json({ message: "User Logged", user, token });
-
+        res.status(200).json({
+            id: user._id,
+            name: user.username,
+            email: user.email,
+            token
+        });
     } catch (error) {
-        console.log('Error >>', error);
-        res.status(500).json(error)
+        console.log("error :>> ", error);
+        res.status(500).json(error);
     }
-}
+};

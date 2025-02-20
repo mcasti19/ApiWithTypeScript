@@ -3,7 +3,6 @@ import { Query } from "../types/RepositoryTypes";
 import { IInvoicesRepository, Invoice, InvoiceCount, InvoicePageCount, InvoicePaginated } from "../types/InvoicesTypes";
 
 export class InvoicesRepository implements IInvoicesRepository {
-  
   async create(data: Invoice): Promise<Invoice> {
     const newInvoices = new InvoicesModel(data);
     return await newInvoices.save();
@@ -38,7 +37,7 @@ export class InvoicesRepository implements IInvoicesRepository {
 
     const formattedResult = getInvoiceCount.reduce(
       (acc, item) => {
-        acc[item._id] = item.totalAmount;
+        acc[ item._id ] = item.totalAmount;
         return acc;
       },
       { paid: 0, pending: 0 }
@@ -57,14 +56,14 @@ export class InvoicesRepository implements IInvoicesRepository {
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
     const matchQuery = query
       ? {
-          $or: [
-            { "customerDetails.name": { $regex: query, $options: "i" } },
-            { "customerDetails.email": { $regex: query, $options: "i" } },
-            { amount: { $regex: query, $options: "i" } },
-            { date: { $regex: query, $options: "i" } },
-            { status: { $regex: query, $options: "i" } }
-          ]
-        }
+        $or: [
+          { "customerDetails.name": { $regex: query, $options: "i" } },
+          { "customerDetails.email": { $regex: query, $options: "i" } },
+          { amount: { $regex: query, $options: "i" } },
+          { date: { $regex: query, $options: "i" } },
+          { status: { $regex: query, $options: "i" } }
+        ]
+      }
       : {}; // Si no hay query, no aplicar filtro.
 
     const invoices = await InvoicesModel.aggregate([
@@ -134,6 +133,6 @@ export class InvoicesRepository implements IInvoicesRepository {
       }
     ]);
 
-    return countResult[0] as InvoicePageCount;
+    return countResult[ 0 ] as InvoicePageCount;
   }
 }

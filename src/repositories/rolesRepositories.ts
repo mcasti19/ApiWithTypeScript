@@ -23,7 +23,7 @@ export class RolesRepository implements IRolesRepository {
     }
 
     async delete(id: string): Promise<boolean> {
-        const deleted = RolesModel.findByIdAndDelete(id).exec();
+        const deleted = await RolesModel.findByIdAndDelete(id).exec();
         return deleted !== null;
     }
 }
