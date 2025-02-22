@@ -20,3 +20,4 @@ __exportStar(require("./Posts"), exports);
 __exportStar(require("./Revenue"), exports);
 __exportStar(require("./Roles"), exports);
 __exportStar(require("./Users"), exports);
+__exportStar(require("./Product"), exports);

@@ -20,3 +20,4 @@ __exportStar(require("./postsController"), exports);
 __exportStar(require("./revenueControllers"), exports);
 __exportStar(require("./rolesController"), exports);
 __exportStar(require("./usersController"), exports);
+__exportStar(require("./productController"), exports);

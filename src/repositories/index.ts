@@ -4,3 +4,4 @@ export * from './postsRepositories';
 export * from './revenueRepositories';
 export * from './rolesRepositories';
 export * from './userRepositories';
+export * from './productsRepositories';

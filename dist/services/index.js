@@ -20,3 +20,4 @@ __exportStar(require("./RevenueService"), exports);
 __exportStar(require("./postsServices"), exports);
 __exportStar(require("./rolesServices"), exports);
 __exportStar(require("./userServices"), exports);
+__exportStar(require("./productsServices"), exports);

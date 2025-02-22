@@ -20,3 +20,4 @@ __exportStar(require("./postsRepositories"), exports);
 __exportStar(require("./revenueRepositories"), exports);
 __exportStar(require("./rolesRepositories"), exports);
 __exportStar(require("./userRepositories"), exports);
+__exportStar(require("./productsRepositories"), exports);

@@ -34,7 +34,7 @@ exports.default = () => {
     router.post("/posts", auth_1.verifyToken, auth_1.getPermission, controllers_1.createPosts);
     router.put("/posts/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.updatePosts);
     router.delete("/posts/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.deletePosts);
-    // Customer Routes
+    //****************************************************/Customer Routes
     router.get("/customer", auth_1.verifyToken, auth_1.getPermission, controllers_1.findCustomer);
     router.get("/customer/search", auth_1.verifyToken, auth_1.getPermission, controllers_1.searchCustomer);
     router.get("/customer/count", auth_1.verifyToken, auth_1.getPermission, controllers_1.customerCount);
@@ -42,7 +42,7 @@ exports.default = () => {
     router.post("/customer", auth_1.verifyToken, auth_1.getPermission, controllers_1.createCustomer);
     router.put("/customer/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.updateCustomer);
     router.delete("/customer/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteCustomer);
-    // Invoices Routes
+    //****************************************************/Invoices Routes
     router.get("/invoices", auth_1.verifyToken, auth_1.getPermission, controllers_1.findInvoices);
     router.get("/invoices/paginate", auth_1.verifyToken, auth_1.getPermission, controllers_1.getInvoicesPaginated);
     router.get("/invoices/status-count", auth_1.verifyToken, auth_1.getPermission, controllers_1.getInvoiceStatusCount);
@@ -52,8 +52,11 @@ exports.default = () => {
     router.post("/invoices", auth_1.verifyToken, auth_1.getPermission, controllers_1.createInvoices);
     router.put("/invoices/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.updateInvoices);
     router.delete("/invoices/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteInvoices);
-    // Revenue Route
+    //****************************************************/Revenue Route
     router.get("/revenues", auth_1.verifyToken, auth_1.getPermission, controllers_1.findRevenue);
     router.post("/revenues", auth_1.verifyToken, auth_1.getPermission, controllers_1.createRevenue);
+    //****************************************************/Products Route
+    router.post("/products", auth_1.verifyToken, auth_1.getPermission, controllers_1.createProduct);
+    router.get("/products", auth_1.verifyToken, auth_1.getPermission, controllers_1.findProducts);
     return router;
 };

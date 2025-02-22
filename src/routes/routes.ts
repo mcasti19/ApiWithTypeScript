@@ -6,6 +6,7 @@ import {
     createCustomer,
     createInvoices,
     createPosts,
+    createProduct,
     createRevenue,
     createUser,
     customerCount,
@@ -20,6 +21,7 @@ import {
     findInvoicesById,
     findPosts,
     findPostsById,
+    findProducts,
     findRevenue,
     getInvoiceCount,
     getInvoicePageCount,
@@ -37,6 +39,8 @@ import {
     updateRoleById,
     updateUserById
 } from "../controllers";
+
+
 
 
 const router = Router();
@@ -76,7 +80,7 @@ export default () => {
     router.delete("/posts/:id", verifyToken, getPermission, deletePosts);
 
 
-    // Customer Routes
+   //****************************************************/Customer Routes
     router.get("/customer", verifyToken, getPermission, findCustomer);
     router.get("/customer/search", verifyToken, getPermission, searchCustomer);
     router.get("/customer/count", verifyToken, getPermission, customerCount);
@@ -85,7 +89,7 @@ export default () => {
     router.put("/customer/:id", verifyToken, getPermission, updateCustomer);
     router.delete("/customer/:id", verifyToken, getPermission, deleteCustomer);
 
-    // Invoices Routes
+   //****************************************************/Invoices Routes
     router.get("/invoices", verifyToken, getPermission, findInvoices);
     router.get("/invoices/paginate", verifyToken, getPermission, getInvoicesPaginated);
     router.get("/invoices/status-count", verifyToken, getPermission, getInvoiceStatusCount);
@@ -96,9 +100,17 @@ export default () => {
     router.put("/invoices/:id", verifyToken, getPermission, updateInvoices);
     router.delete("/invoices/:id", verifyToken, getPermission, deleteInvoices);
 
-    // Revenue Route
+    //****************************************************/Revenue Route
     router.get("/revenues", verifyToken, getPermission, findRevenue);
     router.post("/revenues", verifyToken, getPermission, createRevenue);
+    
+    
+    
+    //****************************************************/Products Route
+    
+    router.post("/products", verifyToken, getPermission, createProduct);
+    router.get("/products", verifyToken, getPermission, findProducts);
+
 
 
     return router
